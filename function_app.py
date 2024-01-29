@@ -28,3 +28,15 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
     
 def send_line_noti():
     logging.info("Line Alert")
+
+def time_trigger_2(myTimer: func.TimerRequest) -> None:
+    try:
+        task = list(tasks_collection.find())
+        task = task[-1]
+        get_data = task.get("temp")
+        if get_data >= 25:
+            logging.info("Alert2")
+        else:
+            logging.info("Else Alert")
+    except Exception as e:
+        return "Error: ", str(e)
