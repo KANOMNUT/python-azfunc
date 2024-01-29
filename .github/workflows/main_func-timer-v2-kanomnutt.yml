@@ -68,7 +68,6 @@ jobs:
         id: deploy-to-function
         with:
           app-name: 'func-timer-v2-kanomnutt'
-          slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
