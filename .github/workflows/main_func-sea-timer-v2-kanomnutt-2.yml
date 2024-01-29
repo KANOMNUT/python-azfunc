@@ -68,7 +68,6 @@ jobs:
         id: deploy-to-function
         with:
           app-name: 'func-sea-timer-v2-kanomnutt-2'
-          slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2C28DC531CE541039965B288463055C5 }}
           scm-do-build-during-deployment: true
