@@ -12,7 +12,7 @@ db = client.get_database("todoapp")
 tasks_collection = db.get_collection("todos")
 
 @app.function_name(name="time_trigger")
-@app.schedule(schedule="0 */5 * * * *", arg_name="myTimer", run_on_startup=False,
+@app.schedule(schedule="0 * * * * *", arg_name="myTimer", run_on_startup=False,
               use_monitor=True) 
 def timer_trigger(myTimer: func.TimerRequest) -> None:
     try:
@@ -29,7 +29,10 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
 def send_line_noti():
     logging.info("Line Alert")
 
-def time_trigger_2(myTimer: func.TimerRequest) -> None:
+
+@app.schedule(schedule="0 * * * * *", arg_name="myTimer2", run_on_startup=False,
+              use_monitor=True) 
+def time_trigger_2(myTimer2: func.TimerRequest) -> None:
     try:
         task = list(tasks_collection.find())
         task = task[-1]
